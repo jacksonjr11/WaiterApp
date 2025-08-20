@@ -6,14 +6,16 @@ export async function createProduct(req: Request, res: Response) {
         const imagePath = req.file?.filename;
         const { name, description, price, category, ingredients } = req.body;
 
+        const parsedIngredients = ingredients ? JSON.parse(ingredients) : [];
+
         const product = await Product.create({
             name,
             description,
             price: Number(price),
             category,
             imagePath,
-            ingredients: JSON.parse(ingredients)
-        })
+            ingredients: parsedIngredients
+        });
 
         res.status(201).json(product);
     } catch (error) {
