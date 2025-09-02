@@ -10,7 +10,7 @@ export const Board = styled.div`
   align-items: center;
   width: 100%;
 
-  header {
+  > header {
     padding: 0.5rem;
     font-size: 0.875rem;
     display: flex;
